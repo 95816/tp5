@@ -46,6 +46,10 @@ class UserToken
     private function grantToken($wxResult)
     {
         //获取到openid
+        //查看数据库是否存在openid
+        //生成令牌
+        //准备值
+        //写入缓存
     }
 
     /**
