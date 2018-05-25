@@ -9,7 +9,6 @@
 namespace app\api\validate;
 
 use app\lib\exception\ParameterException;
-use think\Exception;
 use think\Request;
 use think\Validate;
 
@@ -19,20 +18,23 @@ class BaseValidate extends Validate
     {
         $request = Request::instance();
         $param = $request->param();
+
         if ($this->batch()->check($param)) {
             return true;
         } else {
-            if (config('app_debug')) {
-                try {
-                    $e = new ParameterException([
-                        'msg' => $this->error
-                    ]);
-                } catch (Exception $e) {
-                    throw new Exception('内部错误');
-                }
-
-            }
+            $e = new ParameterException([
+                'msg' => $this->error
+            ]);
             throw $e;
+        }
+    }
+
+    protected function isPositiveInteger($value, $field = '', $data = '', $rule = '')
+    {
+        if (is_numeric($value) && is_integer($value + 0) && (($value + 0) > 0)) {
+            return true;
+        } else {
+            return false;
         }
     }
 }

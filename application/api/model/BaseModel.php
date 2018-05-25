@@ -13,7 +13,7 @@ use think\Model;
 
 class BaseModel extends Model
 {
-    public function getImgUrl($value, $data)
+    protected function prefixImgUrl($value, $data)
     {
         $finalUrl = $value;
         if ($data['from'] == 1) {

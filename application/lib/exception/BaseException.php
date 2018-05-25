@@ -26,9 +26,9 @@ class BaseException extends Exception
 
     public function __construct($params=[])
     {
-        if (!is_array($params)){
+        /*if (!is_array($params)){
             throw new Exception('参数必须是数组!');
-        }
+        }*/
         if (array_key_exists('code',$params)){
             $this->code = $params['code'];
         }

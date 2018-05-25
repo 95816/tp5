@@ -21,8 +21,7 @@ class Banner extends BaseModel
 
     public static function getBannerById($id)
     {
-        return self::with(['items' => ['img']])
-            ->find($id);
+        return self::with(['items' => ['img']])->find($id);
     }
 
 }

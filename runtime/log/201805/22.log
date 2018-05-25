@@ -48,3 +48,161 @@
 [ sql ] [ SQL ] SELECT * FROM `banner_item` WHERE  `banner_id` = 1 [ RunTime:0.000549s ]
 [ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.016084s ]
 [ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (65,2,3,1) [ RunTime:0.000477s ]
+---------------------------------------------------------------
+[ 2018-05-22T13:56:37+08:00 ] 127.0.0.1 GET /api/v1/banner/1
+[ info ] mytp.com/api/v1/banner/1 [运行时间：0.099311s][吞吐率：10.07req/s] [内存消耗：2,463.68kb] [文件加载：48]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010019s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `banner` [ RunTime:0.016873s ]
+[ sql ] [ SQL ] SELECT * FROM `banner` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.000745s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `banner_item` [ RunTime:0.015731s ]
+[ sql ] [ SQL ] SELECT * FROM `banner_item` WHERE  `banner_id` = 1 [ RunTime:0.000561s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.015061s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (65,2,3,1) [ RunTime:0.000882s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:36:22+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3
+[ info ] mytp.com/api/v1/theme?ids=1,2,3 [运行时间：0.067293s][吞吐率：14.86req/s] [内存消耗：2,394.31kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001025s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.016051s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3) [ RunTime:0.000469s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.013730s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000423s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:38:33+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3
+[ info ] mytp.com/api/v1/theme?ids=1,2,3 [运行时间：0.064650s][吞吐率：15.47req/s] [内存消耗：2,394.31kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001342s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.013852s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3) [ RunTime:0.000480s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.012830s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000412s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:38:42+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3
+[ info ] mytp.com/api/v1/theme?ids=1,2,3 [运行时间：0.069762s][吞吐率：14.33req/s] [内存消耗：2,394.31kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000905s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.015408s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3) [ RunTime:0.000535s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.018048s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000424s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:39:54+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3
+[ info ] mytp.com/api/v1/theme?ids=1,2,3 [运行时间：0.068287s][吞吐率：14.64req/s] [内存消耗：2,394.40kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001024s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.017464s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3) [ RunTime:0.000581s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.013397s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000405s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:44:08+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3
+[ info ] mytp.com/api/v1/theme?ids=1,2,3 [运行时间：0.087435s][吞吐率：11.44req/s] [内存消耗：2,395.34kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010712s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.019471s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3) [ RunTime:0.000699s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.014294s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000525s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:44:09+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3
+[ info ] mytp.com/api/v1/theme?ids=1,2,3 [运行时间：0.068058s][吞吐率：14.69req/s] [内存消耗：2,395.34kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001135s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.014378s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3) [ RunTime:0.000523s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.015430s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000479s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:44:10+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3
+[ info ] mytp.com/api/v1/theme?ids=1,2,3 [运行时间：0.068728s][吞吐率：14.55req/s] [内存消耗：2,395.34kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.000862s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.015106s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3) [ RunTime:0.000586s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.015597s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000518s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:44:10+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3
+[ info ] mytp.com/api/v1/theme?ids=1,2,3 [运行时间：0.080366s][吞吐率：12.44req/s] [内存消耗：2,395.34kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010868s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.014713s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3) [ RunTime:0.000877s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.015099s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000523s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:44:11+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3
+[ info ] mytp.com/api/v1/theme?ids=1,2,3 [运行时间：0.081686s][吞吐率：12.24req/s] [内存消耗：2,395.34kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010247s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.016485s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3) [ RunTime:0.002043s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.016576s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000424s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:44:11+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3
+[ info ] mytp.com/api/v1/theme?ids=1,2,3 [运行时间：0.082083s][吞吐率：12.18req/s] [内存消耗：2,395.34kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010035s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.014970s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3) [ RunTime:0.000535s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.019289s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000509s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:44:12+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3
+[ info ] mytp.com/api/v1/theme?ids=1,2,3 [运行时间：0.079189s][吞吐率：12.63req/s] [内存消耗：2,395.34kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010638s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.015056s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3) [ RunTime:0.001532s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.015512s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000417s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:44:12+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3
+[ info ] mytp.com/api/v1/theme?ids=1,2,3 [运行时间：0.079924s][吞吐率：12.51req/s] [内存消耗：2,395.34kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010831s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.014353s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3) [ RunTime:0.000577s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.016821s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000528s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:46:42+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3&XDEBUG_SESSION_START=12205
+[ info ] mytp.com/api/v1/theme?ids=1,2,3&XDEBUG_SESSION_START=12205 [运行时间：0.279465s][吞吐率：3.58req/s] [内存消耗：2,395.41kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011675s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.013638s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3) [ RunTime:0.000631s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.015218s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000655s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:47:19+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3&XDEBUG_SESSION_START=12205
+[ info ] mytp.com/api/v1/theme?ids=1,2,3&XDEBUG_SESSION_START=12205 [运行时间：0.273065s][吞吐率：3.66req/s] [内存消耗：2,395.05kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010521s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.014605s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3) [ RunTime:0.000776s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.015145s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000533s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:47:43+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3&XDEBUG_SESSION_START=12205
+[ info ] mytp.com/api/v1/theme?ids=1,2,3&XDEBUG_SESSION_START=12205 [运行时间：0.274360s][吞吐率：3.64req/s] [内存消耗：2,396.66kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010485s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.014171s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3) [ RunTime:0.000528s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.013981s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000409s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (49,50,18) [ RunTime:0.000565s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:47:45+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3&XDEBUG_SESSION_START=12205
+[ info ] mytp.com/api/v1/theme?ids=1,2,3&XDEBUG_SESSION_START=12205 [运行时间：0.281986s][吞吐率：3.55req/s] [内存消耗：2,396.66kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010467s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.016394s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3) [ RunTime:0.000753s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.015852s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000491s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (49,50,18) [ RunTime:0.000398s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:48:23+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3&XDEBUG_SESSION_START=12205
+[ info ] mytp.com/api/v1/theme?ids=1,2,3&XDEBUG_SESSION_START=12205 [运行时间：0.276744s][吞吐率：3.61req/s] [内存消耗：2,396.55kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010817s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.014937s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3) [ RunTime:0.000540s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.014040s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000424s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (49,50,18) [ RunTime:0.000371s ]
+---------------------------------------------------------------
+[ 2018-05-22T18:58:50+08:00 ] 127.0.0.1 GET /api/v1/theme?ids=1,2,3,4&XDEBUG_SESSION_START=12205
+[ info ] mytp.com/api/v1/theme?ids=1,2,3,4&XDEBUG_SESSION_START=12205 [运行时间：0.280836s][吞吐率：3.56req/s] [内存消耗：2,397.05kb] [文件加载：46]
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010368s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `theme` [ RunTime:0.016841s ]
+[ sql ] [ SQL ] SELECT * FROM `theme` WHERE  `id` IN (1,2,3,4) [ RunTime:0.000672s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `image` [ RunTime:0.016082s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (16,17,18) [ RunTime:0.000895s ]
+[ sql ] [ SQL ] SELECT * FROM `image` WHERE  `id` IN (49,50,18) [ RunTime:0.000479s ]

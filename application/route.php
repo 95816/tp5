@@ -23,4 +23,12 @@ return [
 
 use think\Route;
 
-Route::rule('api/v1/banner/:id','api/v1.Banner/getBannerId','post|get');
+Route::rule('api/:version/banner/:id','api/:version.Banner/getBannerId','post|get');
+
+Route::rule('api/:version/theme','api/:version.Theme/getSimpleList','post|get');
+Route::rule('api/:version/theme/:id','api/:version.Theme/getComplexOne','post|get');
+
+Route::rule('api/:version/product/recent','api/:version.Product/getRecent','post|get');
+Route::rule('api/:version/product/by_category','api/:version.Product/getAllInCategory','post|get');
+
+Route::rule('api/:version/category/all','api/:version.Category/getAllCategories','post|get');
