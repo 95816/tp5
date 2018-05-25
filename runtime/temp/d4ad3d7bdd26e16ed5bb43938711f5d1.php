@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:60:"D:\web\tp5\public/../application/index\view\index\index.html";i:1525345298;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:60:"D:\web\tp5\public/../application/index\view\index\index.html";i:1527227747;}*/ ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
 <head>
@@ -41,7 +41,7 @@
 </script>
 <script src="/static/webuploader/js/dist/webuploader.js"></script>
 
-        <div id="upload-5b02286008d6d" class="xb-uploader">
+        <div id="upload-5b07a5b9c50bf" class="xb-uploader">
             <div class="queueList">
                 <div class="placeholder">
                     <div class="filePicker"></div>
@@ -66,7 +66,7 @@
         </div>
         <script>
         $(function () {
-        var $wrap = $('#upload-5b02286008d6d'),
+        var $wrap = $('#upload-5b07a5b9c50bf'),
 
             // 图片容器
             $queue = $('<ul class="filelist"></ul>')
@@ -204,14 +204,14 @@
         // 实例化
         uploader = WebUploader.create({
             pick: {
-                id: '#upload-5b02286008d6d .filePicker',
+                id: '#upload-5b07a5b9c50bf .filePicker',
                 label: '点击选择图片',
                 multiple : true
             },
             formData: {
                 uid: 123
             },
-            dnd: '#upload-5b02286008d6d .queueList',
+            dnd: '#upload-5b07a5b9c50bf .queueList',
             paste: document.body,
             swf: BASE_URL + '/Uploader.swf',
             chunked: false,
@@ -263,7 +263,7 @@
 
         // 添加“添加文件”的按钮，
         uploader.addButton({
-            id: '#upload-5b02286008d6d .filePicker2',
+            id: '#upload-5b07a5b9c50bf .filePicker2',
             label: '继续添加'
         });
 
@@ -464,7 +464,7 @@
                     text += '，失败' + stats.uploadFailNum + '张';
                 }
                 if (fileCount==stats.successNum && stats.successNum!=0) {
-                    $('#upload-5b02286008d6d .webuploader-element-invisible').remove();
+                    $('#upload-5b07a5b9c50bf .webuploader-element-invisible').remove();
                 }
             }
 
@@ -492,14 +492,14 @@
 
                 case 'ready':
                     $placeHolder.addClass('element-invisible');
-                    $('#upload-5b02286008d6d .filePicker2').removeClass('element-invisible');
+                    $('#upload-5b07a5b9c50bf .filePicker2').removeClass('element-invisible');
                     $queue.show();
                     $statusBar.removeClass('element-invisible');
                     uploader.refresh();
                     break;
 
                 case 'uploading':
-                    $('#upload-5b02286008d6d .filePicker2').addClass('element-invisible');
+                    $('#upload-5b07a5b9c50bf .filePicker2').addClass('element-invisible');
                     $progress.show();
                     $upload.text('暂停上传');
                     break;
@@ -628,7 +628,7 @@
         updateTotalProgress();
     });
     </script>
-        <div id="upload-5b02286008dad" class="xb-uploader">
+        <div id="upload-5b07a5b9c510f" class="xb-uploader">
             <div class="queueList">
                 <div class="placeholder">
                     <div class="filePicker"></div>
@@ -653,7 +653,7 @@
         </div>
         <script>
         $(function () {
-        var $wrap = $('#upload-5b02286008dad'),
+        var $wrap = $('#upload-5b07a5b9c510f'),
 
             // 图片容器
             $queue = $('<ul class="filelist"></ul>')
@@ -791,14 +791,14 @@
         // 实例化
         uploader = WebUploader.create({
             pick: {
-                id: '#upload-5b02286008dad .filePicker',
+                id: '#upload-5b07a5b9c510f .filePicker',
                 label: '点击选择图片',
                 multiple : true
             },
             formData: {
                 uid: 123
             },
-            dnd: '#upload-5b02286008dad .queueList',
+            dnd: '#upload-5b07a5b9c510f .queueList',
             paste: document.body,
             swf: BASE_URL + '/Uploader.swf',
             chunked: false,
@@ -850,7 +850,7 @@
 
         // 添加“添加文件”的按钮，
         uploader.addButton({
-            id: '#upload-5b02286008dad .filePicker2',
+            id: '#upload-5b07a5b9c510f .filePicker2',
             label: '继续添加'
         });
 
@@ -1051,7 +1051,7 @@
                     text += '，失败' + stats.uploadFailNum + '张';
                 }
                 if (fileCount==stats.successNum && stats.successNum!=0) {
-                    $('#upload-5b02286008dad .webuploader-element-invisible').remove();
+                    $('#upload-5b07a5b9c510f .webuploader-element-invisible').remove();
                 }
             }
 
@@ -1079,14 +1079,14 @@
 
                 case 'ready':
                     $placeHolder.addClass('element-invisible');
-                    $('#upload-5b02286008dad .filePicker2').removeClass('element-invisible');
+                    $('#upload-5b07a5b9c510f .filePicker2').removeClass('element-invisible');
                     $queue.show();
                     $statusBar.removeClass('element-invisible');
                     uploader.refresh();
                     break;
 
                 case 'uploading':
-                    $('#upload-5b02286008dad .filePicker2').addClass('element-invisible');
+                    $('#upload-5b07a5b9c510f .filePicker2').addClass('element-invisible');
                     $progress.show();
                     $upload.text('暂停上传');
                     break;

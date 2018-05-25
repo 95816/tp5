@@ -32,3 +32,6 @@ Route::rule('api/:version/product/recent','api/:version.Product/getRecent','post
 Route::rule('api/:version/product/by_category','api/:version.Product/getAllInCategory','post|get');
 
 Route::rule('api/:version/category/all','api/:version.Category/getAllCategories','post|get');
+
+//WeChat API
+Route::rule('api/:version/token/user','api/:version.Token/getToken','post');

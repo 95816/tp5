@@ -19,8 +19,7 @@ class Index extends Controller
     public function ajax_upload(Request $request)
     {
         if ($request->isPost()) {
-            echo '<pre>';
-            print_r($request->file(''));
+
         }
     }
 }
