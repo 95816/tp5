@@ -34,3 +34,14 @@ function https_request($url, $data = null, $method = "POST")
 
     return $output;
 }
+
+function getRandChar($num)
+{
+    $randStr = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $max = strlen($randStr) - 1;
+    $returnStr = '';
+    for ($i = 0; $i < $num; $i++) {
+        $returnStr .= $randStr[rand(0, $max)];
+    }
+    return $returnStr;
+}

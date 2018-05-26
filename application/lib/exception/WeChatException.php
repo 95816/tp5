@@ -14,7 +14,7 @@ class WeChatException extends BaseException
     //HTTP 状态码
     public $code = 400;
     //错误具体信息
-    public $msg = '请求微信服务器失败,';
+    public $msg = '微信服务器接口调用失败';
     //自定义状态码
     public $errorCode = 999;
 }

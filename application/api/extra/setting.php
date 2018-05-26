@@ -6,5 +6,6 @@
  * Time: 11:31
  */
 return [
-    'img_prefix' => 'http://mytp.com/images'
+    'img_prefix' => 'http://mytp.com/images',
+    'token_expire_time' => 7200
 ];

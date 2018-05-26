@@ -27,7 +27,6 @@ class Banner
     {
         (new IDMustBePositiveInt())->goCheck();
         $banner = BannerModel::getBannerById($id);
-//        $banner = BannerModel::with(['items'=>['img']])->find($id);
         if (!$banner) {
             throw new BannerMissException([
                 'msg' => '未能正确获取到数据'

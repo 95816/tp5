@@ -16,6 +16,7 @@ class Token
 {
     /**
      * @param string $code
+     * @return string|void
      * @throws \app\lib\exception\ParameterException
      * @throws \think\Exception
      */
@@ -24,8 +25,10 @@ class Token
         (new TokenValidate())->goCheck();
         $ut = new UserToken($code);
         $token = $ut->get();
-        echo '<pre>';
-        print_r($token);
+        $token = json_encode([
+            'token' => $token
+        ]);
+        return $token;
 
     }
 
