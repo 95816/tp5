@@ -1,4 +1,0 @@
-<?php
-//000000000000
- exit();?>
-a:4:{i:0;a:7:{s:2:"id";i:1;s:6:"img_id";i:65;s:8:"key_word";s:1:"6";s:4:"type";i:1;s:11:"delete_time";N;s:9:"banner_id";i:1;s:11:"update_time";N;}i:1;a:7:{s:2:"id";i:2;s:6:"img_id";i:2;s:8:"key_word";s:2:"25";s:4:"type";i:1;s:11:"delete_time";N;s:9:"banner_id";i:1;s:11:"update_time";N;}i:2;a:7:{s:2:"id";i:3;s:6:"img_id";i:3;s:8:"key_word";s:2:"11";s:4:"type";i:1;s:11:"delete_time";N;s:9:"banner_id";i:1;s:11:"update_time";N;}i:3;a:7:{s:2:"id";i:5;s:6:"img_id";i:1;s:8:"key_word";s:2:"10";s:4:"type";i:1;s:11:"delete_time";N;s:9:"banner_id";i:1;s:11:"update_time";N;}}

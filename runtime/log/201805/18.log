@@ -1,6 +1,0 @@
----------------------------------------------------------------
-[ 2018-05-18T18:23:26+08:00 ] 127.0.0.1 GET /api/v1/banner/1
-[ info ] mytp.com/api/v1/banner/1 [运行时间：0.063822s][吞吐率：15.67req/s] [内存消耗：1,933.87kb] [文件加载：39]
-[ sql ] [ DB ] CONNECT:[ UseTime:0.001071s ] mysql:host=127.0.0.1;port=3306;dbname=wechat;charset=utf8
-[ sql ] [ SQL ] SHOW COLUMNS FROM `banner_item` [ RunTime:0.019029s ]
-[ sql ] [ SQL ] SELECT * FROM `banner_item` WHERE  (  `banner_id` = 1 ) [ RunTime:0.000556s ]
