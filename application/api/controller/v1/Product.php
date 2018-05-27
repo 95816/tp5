@@ -43,7 +43,7 @@ class Product
      * @throws ProductException
      * @throws \app\lib\exception\ParameterException
      */
-    public function getAllInCategory($id)
+    public function getAllInCategory($id = '')
     {
         (new IDMustBePositiveInt())->goCheck();
         $products = ProductModel::getProductsByCategoryID($id);
@@ -54,5 +54,12 @@ class Product
         }
         $products = $products->hidden(['summary']);
         return $products;
+    }
+
+    public function getOne($id)
+    {
+        (new IDMustBePositiveInt())->goCheck();
+        $result = ProductModel::getProductDetail($id);
+        return $result;
     }
 }

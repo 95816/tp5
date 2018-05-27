@@ -26,8 +26,28 @@ class Product extends BaseModel
         return self::limit($count)->order('create_time', 'desc')->select();
     }
 
+    //商品分类 ID为分类ID
     public static function getProductsByCategoryID($id)
     {
         return self::where('category_id', $id)->select();
     }
+
+    //设置商品详情图关联
+    public function imgs()
+    {
+        return $this->hasMany('ProductImage','product_id','id');
+    }
+
+    //设置商品属性关联
+    public function properties()
+    {
+        return $this->hasMany('ProductProperty','product_id','id');
+    }
+
+    //查看商品详情
+    public static function getProductDetail($id)
+    {
+        return self::with('imgs,properties,imgs.imgUrl')->find($id);
+    }
+
 }
