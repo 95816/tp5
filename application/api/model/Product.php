@@ -35,19 +35,24 @@ class Product extends BaseModel
     //设置商品详情图关联
     public function imgs()
     {
-        return $this->hasMany('ProductImage','product_id','id');
+        return $this->hasMany('ProductImage', 'product_id', 'id');
     }
 
     //设置商品属性关联
     public function properties()
     {
-        return $this->hasMany('ProductProperty','product_id','id');
+        return $this->hasMany('ProductProperty', 'product_id', 'id');
     }
 
     //查看商品详情
     public static function getProductDetail($id)
     {
-        return self::with('imgs,properties,imgs.imgUrl')->find($id);
+//        return self::with(['properties','imgs.imgUrl'])->find($id);
+        return self::with(['properties'])
+            ->with(['imgs' => function ($query) {
+                $query->with(['imgUrl'])->order('order', 'asc');
+            }])
+            ->find($id);
     }
 
 }

@@ -56,6 +56,12 @@ class Product
         return $products;
     }
 
+    /**
+     * @url /product/11
+     * @param $id
+     * @return array|false|\PDOStatement|string|\think\Model
+     * @throws \app\lib\exception\ParameterException
+     */
     public function getOne($id)
     {
         (new IDMustBePositiveInt())->goCheck();
