@@ -6,7 +6,7 @@ url格式:http://mytp.com/api/v1/banner/(id)
 
 2.获取主题列表
 控制器:api/controller/v1.Theme/getSimpleList
-url格式:http://mytp.com/api/v1/banner/(ids=1,2,3...)
+url格式:http://mytp.com/api/v1/theme/(ids=1,2,3...)
 参数要求:必须传入以逗号隔开的ID数据形式.
 示例:http://mytp.com/api/v1/theme?ids=1,2,3
 
@@ -27,8 +27,12 @@ url格式:http://mytp.com/api/v1/product/recent
 url格式:http://mytp.com/api/v1/category/all
 示例:http://mytp.com/api/v1/category/all
 
-4.获取分类商品
+5.获取分类商品
 控制器:api/controller/v1.Category/getAllInCategory
 url格式:http://mytp.com/api/v1/category/by_category
 示例:http://mytp.com/api/v1/product/by_category?id=2
 
+6.获取单一商品
+控制器:api/controller/v1.Product/getOne
+url格式:http://mytp.com/api/v1/product/:id
+示例:http://mytp.com/api/v1/product/11

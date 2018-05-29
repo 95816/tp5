@@ -18,7 +18,7 @@ use app\lib\exception\ProductException;
 class Product
 {
     /**
-     * @url /product/recent
+     * @url /product/recent?count=12
      * @return products of Collection
      * @param int $count
      * @return false|\PDOStatement|string|\think\Collection
@@ -37,7 +37,7 @@ class Product
     }
 
     /**
-     * @url /product/by_category/id
+     * @url /product/by_category?id=2
      * @param $id
      * @return false|\PDOStatement|string|\think\Collection
      * @throws ProductException
@@ -61,11 +61,15 @@ class Product
      * @param $id
      * @return array|false|\PDOStatement|string|\think\Model
      * @throws \app\lib\exception\ParameterException
+     * @throws ProductException
      */
     public function getOne($id)
     {
         (new IDMustBePositiveInt())->goCheck();
         $result = ProductModel::getProductDetail($id);
+        if(!$result){
+            throw new ProductException();
+        }
         return $result;
     }
 }
