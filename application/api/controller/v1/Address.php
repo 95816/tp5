@@ -23,6 +23,7 @@ class address
         //获取用户从客户端提交的地址信息
         //根据用户的信息是否存在,判断是更新还是新增
 
-        $uid = TokenService::generateToken();
+        $uid = TokenService::getCurrentUid();
+        return $uid;
     }
 }
