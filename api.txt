@@ -36,3 +36,8 @@ url格式:http://mytp.com/api/v1/category/by_category
 控制器:api/controller/v1.Product/getOne
 url格式:http://mytp.com/api/v1/product/:id
 示例:http://mytp.com/api/v1/product/11
+
+7.用户地址
+控制器:api/controller/v1.Address/createOrUpdateAddress
+url格式:http://mytp.com/api/v1/address
+示例:http://mytp.com/api/v1/address
