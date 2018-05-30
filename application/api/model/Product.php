@@ -20,18 +20,6 @@ class Product extends BaseModel
         return $this->prefixImgUrl($value, $data);
     }
 
-    //获取最新商品
-    public static function getMostRecent($count)
-    {
-        return self::limit($count)->order('create_time', 'desc')->select();
-    }
-
-    //商品分类 ID为分类ID
-    public static function getProductsByCategoryID($id)
-    {
-        return self::where('category_id', $id)->select();
-    }
-
     //设置商品详情图关联
     public function imgs()
     {
@@ -42,6 +30,19 @@ class Product extends BaseModel
     public function properties()
     {
         return $this->hasMany('ProductProperty', 'product_id', 'id');
+    }
+
+    //获取最新商品
+
+    public static function getMostRecent($count)
+    {
+        return self::limit($count)->order('create_time', 'desc')->select();
+    }
+    //商品分类 ID为分类ID
+
+    public static function getProductsByCategoryID($id)
+    {
+        return self::where('category_id', $id)->select();
     }
 
     //查看商品详情

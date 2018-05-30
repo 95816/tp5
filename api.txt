@@ -38,6 +38,7 @@ url格式:http://mytp.com/api/v1/product/:id
 示例:http://mytp.com/api/v1/product/11
 
 7.用户地址
+@description 在header头里传入token并且body里传入地址参数
 控制器:api/controller/v1.Address/createOrUpdateAddress
 url格式:http://mytp.com/api/v1/address
 示例:http://mytp.com/api/v1/address

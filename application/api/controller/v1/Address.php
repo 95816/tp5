@@ -31,7 +31,7 @@ class Address
         //1.根据token来获取uid
         $uid = TokenService::getCurrentUid();
         //2.根据uid查找用户数据,判断用户是否存在,若不存在则抛出异常
-        $user = UserModel::get($uid);
+        $user = UserModel::get($uid, 'address');
         if (!$user) {
             throw new UserException();
         }
@@ -39,14 +39,13 @@ class Address
         $dataArr = $addressValidate->getDataByRule(input('post.'));
         //4.根据用户的信息是否存在,判断是更新还是新增
         $userAddress = $user->address;
-
         if (!$userAddress) {
             $user->address()->save($dataArr);
         } else {
             $user->address->save($dataArr);
         }
 
-        return json(new SuccessException(),201);
+        return json(new SuccessException(), 201);
 
     }
 }

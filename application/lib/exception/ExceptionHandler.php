@@ -25,9 +25,9 @@ class ExceptionHandler extends Handle
             $this->msg = $exception->msg;
             $this->errorCode = $exception->errorCode;
         } else {
-            if (config('app_debug')){
+            if (config('app_debug')) {
                 return parent::render($exception);
-            }else{
+            } else {
                 $this->code = 500;
                 $this->msg = '服务器内部错误!';
                 $this->errorCode = '999';
