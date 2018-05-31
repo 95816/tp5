@@ -29,7 +29,6 @@ class Token
             'token' => $token
         ]);
         return $token;
-
     }
 
 }

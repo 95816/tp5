@@ -50,9 +50,26 @@ class Token
         }
     }
 
+    /**
+     * @return cacheValue
+     * @throws Exception
+     * @throws TokenException
+     */
     public static function getCurrentUid()
     {
         $uid = self::getCurrentTokenVar('uid');
         return $uid;
     }
+
+    /**
+     * @return cacheValue
+     * @throws Exception
+     * @throws TokenException
+     */
+    public static function getCurrentScope()
+    {
+        $scope = self::getCurrentTokenVar('scope');
+        return $scope;
+    }
+
 }

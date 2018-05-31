@@ -19,10 +19,4 @@ class Category extends BaseModel
         return $this->belongsTo('Image', 'topic_img_id', 'id');
     }
 
-    //分类关联商品
-    public function products()
-    {
-        return $this->hasMany('Product', 'category_id', 'id');
-    }
-
 }
