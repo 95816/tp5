@@ -44,5 +44,8 @@ Route::rule('api/:version/category/all', 'api/:version.Category/getAllCategories
 //用户地址路由
 Route::rule('api/:version/address','api/:version.Address/createOrUpdateAddress','post');
 
-//WeChat API
+//订单路由
 Route::rule('api/:version/token/user', 'api/:version.Token/getToken', 'post');
+
+//WeChat API
+Route::rule('api/:version/order', 'api/:version.Order/placeOrder', 'post');
