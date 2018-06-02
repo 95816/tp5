@@ -8,6 +8,8 @@
 
 namespace app\api\controller\v1;
 
+use app\api\validate\PlaceOrder;
+
 class Order extends BaseController
 {
     // 用户在选择商品后，向API提交包含他所选择商品的相关信息
@@ -20,15 +22,19 @@ class Order extends BaseController
     // 成功扣除库存量前再次检测，因为有一种情况，在支付结果返回前商品卖完了
     // 成功：进行库存量扣除
 
+    //指定前置操作方法
     protected $beforeActionList = [
-        'checkExclusiveScope' => ['only' => ['placeOrder']]
+        'checkExclusiveScope' => ['only' => 'placeorder'],
     ];
 
-
+    /**
+     * @return string
+     * @throws \app\lib\exception\ParameterException
+     */
     public function placeOrder()
     {
-        echo '312';
-        die;
+        (new PlaceOrder())->goCheck();
+        return '验证通过';
     }
 
 

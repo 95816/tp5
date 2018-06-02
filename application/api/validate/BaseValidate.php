@@ -14,11 +14,14 @@ use think\Validate;
 
 class BaseValidate extends Validate
 {
+    /**
+     * @return bool
+     * @throws ParameterException
+     */
     public function goCheck()
     {
         $request = Request::instance();
         $param = $request->param();
-
         if ($this->batch()->check($param)) {
             return true;
         } else {
