@@ -25,6 +25,7 @@ class PlaceOrder extends BaseValidate
 
     /**
      * @param $value
+     * @return bool
      * @throws ParameterException
      */
     protected function checkProducts($value)
@@ -42,6 +43,7 @@ class PlaceOrder extends BaseValidate
         foreach ($value as $item) {
             $this->checkProduct($item);
         }
+        return true;
     }
 
     /**
