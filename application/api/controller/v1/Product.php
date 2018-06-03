@@ -19,11 +19,13 @@ class Product
 {
     /**
      * @url /product/recent?count=12
-     * @return products of Collection
      * @param int $count
-     * @return false|\PDOStatement|string|\think\Collection
+     * @return products of Collection
      * @throws ProductException
      * @throws \app\lib\exception\ParameterException
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
      */
     public function getRecent($count = 15)
     {
@@ -38,10 +40,13 @@ class Product
 
     /**
      * @url /product/by_category?id=2
-     * @param $id
+     * @param string $id
      * @return false|\PDOStatement|string|\think\Collection
      * @throws ProductException
      * @throws \app\lib\exception\ParameterException
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
      */
     public function getAllInCategory($id = '')
     {
@@ -60,8 +65,11 @@ class Product
      * @url /product/11
      * @param $id
      * @return array|false|\PDOStatement|string|\think\Model
-     * @throws \app\lib\exception\ParameterException
      * @throws ProductException
+     * @throws \app\lib\exception\ParameterException
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
      */
     public function getOne($id)
     {

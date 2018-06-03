@@ -34,23 +34,48 @@ class Product extends BaseModel
 
     //获取最新商品
 
+    /**
+     * @param $count
+     * @return false|\PDOStatement|string|\think\Collection
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
     public static function getMostRecent($count)
     {
         return self::limit($count)->order('create_time', 'desc')->select();
     }
     //商品分类 ID为分类ID
 
+    /**
+     * @param $id
+     * @return false|\PDOStatement|string|\think\Collection
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
     public static function getProductsByCategoryID($id)
     {
         return self::where('category_id', $id)->select();
     }
 
     //查看商品详情
+
+    /**
+     * @param $id
+     * @return array|false|\PDOStatement|string|\think\Model
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     */
     public static function getProductDetail($id)
     {
 //        return self::with(['properties','imgs.imgUrl'])->find($id);
         return self::with(['properties'])
-            ->with(['imgs' => function ($query) {
+            ->with(['imgs' => /**
+             * @param $query
+             */
+                function ($query) {
                 $query->with(['imgUrl'])->order('order', 'asc');
             }])
             ->find($id);

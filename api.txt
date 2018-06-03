@@ -1,16 +1,25 @@
 1.获取banner位
+@description 获取banner信息
+@method POST|GET
+@param ID->BannerID
 控制器:api/controller/v1.Banner/getBannerId
 url格式:http://mytp.com/api/v1/banner/(id)
 参数要求:id必须为正整数.
 示例:http://mytp.com/api/v1/banner/1
 
 2.获取主题列表
+@description 获取主题列表信息
+@method POST|GET
+@param ids->主题ID逗号隔开(?)
 控制器:api/controller/v1.Theme/getSimpleList
 url格式:http://mytp.com/api/v1/theme/(ids=1,2,3...)
 参数要求:必须传入以逗号隔开的ID数据形式.
 示例:http://mytp.com/api/v1/theme?ids=1,2,3
 
 3.获取单一主题
+@description 获取单个主题信息
+@method POST|GET
+@param ID->主题ID
 控制器:api/controller/v1.Theme/getComplexOne
 url格式:http://mytp.com/api/v1/theme/(id)
 参数要求:id必须为正整数.
@@ -18,27 +27,54 @@ url格式:http://mytp.com/api/v1/theme/(id)
 
 
 3.获取最新商品
+@description 获取最新商品
+@method POST|GET
+@param count->获取条数(?)
 控制器:api/controller/v1.Product/getRecent
 url格式:http://mytp.com/api/v1/product/recent
 示例:http://mytp.com/api/v1/product/recent
 
 4.获取所有分类
+@description 获取所有分类
+@method POST|GET
 控制器:api/controller/v1.Category/getAllCategories
 url格式:http://mytp.com/api/v1/category/all
 示例:http://mytp.com/api/v1/category/all
 
 5.获取分类商品
+@description 获取分类所有商品
+@method POST|GET
+@param ID->分类ID
 控制器:api/controller/v1.Category/getAllInCategory
 url格式:http://mytp.com/api/v1/category/by_category
 示例:http://mytp.com/api/v1/product/by_category?id=2
 
 6.获取单一商品
+@description 获取单个商品信息
+@method POST|GET
+@param ID->商品ID
 控制器:api/controller/v1.Product/getOne
 url格式:http://mytp.com/api/v1/product/:id
 示例:http://mytp.com/api/v1/product/11
 
-7.用户地址
+7.获取token
+@description 获取token
+@method POST
+@param code
+控制器:api/controller/v1.Token/getToken
+url格式:http://mytp.com/api/v1/token/user
+示例:http://mytp.com/api/v1/token/user
+
+8.用户地址
 @description 在header头里传入token并且body里传入地址参数
+@method POST
 控制器:api/controller/v1.Address/createOrUpdateAddress
 url格式:http://mytp.com/api/v1/address
 示例:http://mytp.com/api/v1/address
+
+9.用户下单接口
+@description 在header头里传入token并且body里传入下单商品信息
+@method POST
+控制器:api/controller/v1.Order/placeOrder
+url格式:http://mytp.com/api/v1/order
+示例:http://mytp.com/api/v1/order

@@ -9,6 +9,7 @@
 namespace app\api\controller\v1;
 
 use app\api\validate\PlaceOrder;
+use app\api\service\Token as TokenService;
 
 class Order extends BaseController
 {
@@ -30,11 +31,16 @@ class Order extends BaseController
     /**
      * @return string
      * @throws \app\lib\exception\ParameterException
+     * @throws \app\lib\exception\TokenException
+     * @throws \think\Exception
      */
     public function placeOrder()
     {
         (new PlaceOrder())->goCheck();
-        return '验证通过';
+        $products = input('post.products/a');
+        $uid = TokenService::getCurrentUid();
+        return $uid;
+
     }
 
 
