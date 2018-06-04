@@ -10,7 +10,9 @@ namespace app\api\service;
 
 
 use app\api\model\Product;
+use app\api\model\UserAddress;
 use app\lib\exception\OrderException;
+use app\lib\exception\UserException;
 
 class Order
 {
@@ -46,7 +48,48 @@ class Order
         }
 
         //检测库存通过，开始创建订单
+        $orderSnap = $this->snapOrder($status);
+    }
 
+    private function snapOrder($status)
+    {
+        $snap = [
+            'orderPrice' => 0,
+            'totalCount' => 0,
+            'pStatus' => [],
+            'snapAddress' => null,
+            'snapName' => '',
+            'snapImg' => ''
+
+        ];
+
+        $snap['orderPrice'] = $status['orderPrice'];
+        $snap['totalCount'] = $status['totalCount'];
+        $snap['pStatus'] = $status['pStatusArray'];
+        $snap['snapAddress'] = json_encode($this->getUserAddress());
+        $snap['snapName'] = $this->products[0]['name'];
+        $snap['main_img_url'] = $this->products[0]['main_img_url'];
+
+        if (count($this->products) > 1) {
+            $snap['snapName'] .= '等';
+        }
+    }
+
+    /**
+     * 获取当前用户下单地址
+     * @return array
+     * @throws UserException
+     * @throws \think\exception\DbException
+     */
+    private function getUserAddress()
+    {
+        $address = UserAddress::where('user_id', $this->uid)->find();
+        if (!$address) {
+            throw new UserException([
+                'msg' => '用户地址不存在，下单失败'
+            ]);
+        }
+        return $address->toArray();
     }
 
     /**
@@ -63,12 +106,14 @@ class Order
              */
             'pass' => true,
             'orderPrice' => 0,
+            'totalCount' => 0,
             'pStatusArray' => []
         ];
 
         foreach ($this->oProducts as $oProduct) {
             $pStatus = $this->getProductStatus($oProduct['product_id'], $oProduct['count'], $this->products);
             $status['orderPrice'] += $pStatus['totalPrice'];
+            $status['totalCount'] += $pStatus['count'];
             array_push($status['pStatusArray'], $pStatus);
             if (!$pStatus['hasStock']) {
                 $status['pass'] = false;
