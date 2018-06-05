@@ -9,10 +9,12 @@
 namespace app\api\service;
 
 
+use app\api\model\OrderProduct;
 use app\api\model\Product;
 use app\api\model\UserAddress;
 use app\lib\exception\OrderException;
 use app\lib\exception\UserException;
+use think\Exception;
 
 class Order
 {
@@ -32,6 +34,7 @@ class Order
      * @return array
      * @throws \think\exception\DbException
      * @throws OrderException
+     * @throws UserException
      */
     public function place($uid, $oProducts)
     {
@@ -49,8 +52,68 @@ class Order
 
         //检测库存通过，开始创建订单
         $orderSnap = $this->snapOrder($status);
+        $status = $this->createOrder($orderSnap);
+        $status['pass'] = true;
+        return $status;
     }
 
+    /**
+     * @param $snap
+     * @return array
+     * @throws \Exception
+     */
+    private function createOrder($snap)
+    {
+        try {
+            $orderNo = $this->makeOrderNo();
+            $order = new \app\api\model\Order();
+            $order->order_no = $orderNo;
+            $order->user_id = $this->uid;
+            $order->total_price = $snap['orderPrice'];
+            $order->total_count = $snap['totalCount'];
+            $order->snap_img = $snap['snapImg'];
+            $order->snap_name = $snap['snapName'];
+            $order->snap_address = $snap['snapAddress'];
+            $order->snap_items = json_encode($snap['pStatus']);
+            if ($order->save()) {
+                $orderID = $order->id;
+                foreach ($this->oProducts as &$oProduct) {
+                    $oProduct['order_id'] = $orderID;
+                }
+                $orderProduct = new OrderProduct();
+                $orderProduct->saveAll($this->oProducts);
+                return [
+                    'order_no' => $orderNo,
+                    'order_id' => $orderID,
+                    'create_time' => $order->create_time
+                ];
+            } else {
+                throw new OrderException([
+                    'msg' => '入库错误，创建订单失败'
+                ]);
+            }
+        } catch (Exception $exception) {
+            throw $exception;
+        }
+
+    }
+
+    public function makeOrderNo()
+    {
+        $yCode = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+        $orderSn = $yCode[intval(date('Y') - 2018)] . strtoupper(dechex(date('m'))) .
+            date('d') . substr(time(), -5) . substr(microtime(), 2, 5) .
+            sprintf('%02d', rand(0, 99));
+        return $orderSn;
+    }
+
+    /**
+     * 生成订单快照
+     * @param $status
+     * @return array
+     * @throws UserException
+     * @throws \think\exception\DbException
+     */
     private function snapOrder($status)
     {
         $snap = [
@@ -73,6 +136,8 @@ class Order
         if (count($this->products) > 1) {
             $snap['snapName'] .= '等';
         }
+
+        return $snap;
     }
 
     /**

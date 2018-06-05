@@ -10,6 +10,7 @@ namespace app\api\controller\v1;
 
 use app\api\validate\PlaceOrder;
 use app\api\service\Token as TokenService;
+use app\api\service\Order as OrderService;
 
 class Order extends BaseController
 {
@@ -39,8 +40,10 @@ class Order extends BaseController
         (new PlaceOrder())->goCheck();
         $products = input('post.products/a');
         $uid = TokenService::getCurrentUid();
-        return $uid;
-
+        $order = new OrderService();
+        $status = $order->place($uid, $products);
+        /** @var TYPE_NAME $status */
+        return $status;
     }
 
 
