@@ -25,9 +25,9 @@ class Token
         (new TokenValidate())->goCheck();
         $ut = new UserToken($code);
         $token = $ut->get();
-        $token = json_encode([
+        $token = [
             'token' => $token
-        ]);
+        ];
         return $token;
     }
 

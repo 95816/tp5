@@ -50,8 +50,9 @@ class Order
             return $status;
         }
 
-        //检测库存通过，开始创建订单
+        // 生成订单快照
         $orderSnap = $this->snapOrder($status);
+        // 检测库存通过，开始创建订单
         $status = $this->createOrder($orderSnap);
         $status['pass'] = true;
         return $status;
@@ -131,7 +132,7 @@ class Order
         $snap['pStatus'] = $status['pStatusArray'];
         $snap['snapAddress'] = json_encode($this->getUserAddress());
         $snap['snapName'] = $this->products[0]['name'];
-        $snap['main_img_url'] = $this->products[0]['main_img_url'];
+        $snap['snapImg'] = $this->products[0]['main_img_url'];
 
         if (count($this->products) > 1) {
             $snap['snapName'] .= '等';
@@ -151,7 +152,8 @@ class Order
         $address = UserAddress::where('user_id', $this->uid)->find();
         if (!$address) {
             throw new UserException([
-                'msg' => '用户地址不存在，下单失败'
+                'msg' => '用户地址不存在，下单失败',
+                'errorCode' => 60001
             ]);
         }
         return $address->toArray();
@@ -239,7 +241,7 @@ class Order
         }
 
         $products = Product::all($oPIDs)
-            ->hidden(['id', 'price', 'stock', 'name', 'main_img_url'])
+            ->visible(['id', 'price', 'stock', 'name', 'main_img_url'])
             ->toArray();
         return $products;
     }
