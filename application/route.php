@@ -28,7 +28,7 @@ Route::rule('api/:version/banner/:id', 'api/:version.Banner/getBannerId', 'post|
 //主题路由
 Route::group('api/:version/theme', function () {
     Route::any('', 'api/:version.Theme/getSimpleList');
-    Route::any(':id', 'api/:version.Theme/getComplexOne', ['method'=>'get|post'], ['id' => '\d+']);
+    Route::any(':id', 'api/:version.Theme/getComplexOne', ['method' => 'get|post'], ['id' => '\d+']);
 }, ['method' => 'get|post']);
 
 //商品路由
@@ -42,10 +42,11 @@ Route::group('api/:version/product', [
 Route::rule('api/:version/category/all', 'api/:version.Category/getAllCategories', 'post|get');
 
 //用户地址路由
-Route::rule('api/:version/address','api/:version.Address/createOrUpdateAddress','post');
+Route::rule('api/:version/address', 'api/:version.Address/createOrUpdateAddress', 'post');
 
 //订单路由
 Route::rule('api/:version/order', 'api/:version.Order/placeOrder', 'post');
 
 //WeChat API
 Route::rule('api/:version/token/user', 'api/:version.Token/getToken', 'post');
+Route::rule('api/:version/pay/pre_order', 'api/:version.Pay/getPreOrder', 'post');

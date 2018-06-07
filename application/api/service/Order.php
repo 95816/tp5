@@ -14,6 +14,7 @@ use app\api\model\Product;
 use app\api\model\UserAddress;
 use app\lib\exception\OrderException;
 use app\lib\exception\UserException;
+use think\Db;
 use think\Exception;
 
 class Order
@@ -65,6 +66,8 @@ class Order
      */
     private function createOrder($snap)
     {
+        // 启动事务
+        Db::startTrans();
         try {
             $orderNo = $this->makeOrderNo();
             $order = new \app\api\model\Order();
@@ -76,24 +79,22 @@ class Order
             $order->snap_name = $snap['snapName'];
             $order->snap_address = $snap['snapAddress'];
             $order->snap_items = json_encode($snap['pStatus']);
-            if ($order->save()) {
-                $orderID = $order->id;
-                foreach ($this->oProducts as &$oProduct) {
-                    $oProduct['order_id'] = $orderID;
-                }
-                $orderProduct = new OrderProduct();
-                $orderProduct->saveAll($this->oProducts);
-                return [
-                    'order_no' => $orderNo,
-                    'order_id' => $orderID,
-                    'create_time' => $order->create_time
-                ];
-            } else {
-                throw new OrderException([
-                    'msg' => '入库错误，创建订单失败'
-                ]);
+            $order->save();
+            $orderID = $order->id;
+            foreach ($this->oProducts as &$oProduct) {
+                $oProduct['order_id'] = $orderID;
             }
+            $orderProduct = new OrderProduct();
+            $orderProduct->saveAll($this->oProducts);
+            Db::commit();
+            return [
+                'order_no' => $orderNo,
+                'order_id' => $orderID,
+                'create_time' => $order->create_time
+            ];
+
         } catch (Exception $exception) {
+            Db::rollback();
             throw $exception;
         }
 
@@ -157,6 +158,22 @@ class Order
             ]);
         }
         return $address->toArray();
+    }
+
+    /**
+     * 根据订单ID再次检测库存量
+     * @param $orderID
+     * @return array
+     * @throws OrderException
+     * @throws \think\exception\DbException
+     */
+    public function checkOrderStack($orderID)
+    {
+        $oProducts = OrderProduct::where('order_id', $orderID)->select();
+        $this->oProducts = $oProducts;
+        $this->products = $this->getProductsByOrder($oProducts);
+        $status = $this->getOrderStatus();
+        return $status;
     }
 
     /**
@@ -231,6 +248,8 @@ class Order
 
     /**
      * 根据客服端的订单商品获取数据库中商品的真实数据信息
+     * @param $oProducts
+     * @return
      * @throws \think\exception\DbException
      */
     private function getProductsByOrder($oProducts)

@@ -13,4 +13,7 @@ class Order extends BaseModel
 {
     //设置隐藏字段
     protected $hidden = ['user_id', 'delete_time', 'update_time'];
+
+    //设置自动维护时间戳
+    protected $autoWriteTimestamp = true;
 }

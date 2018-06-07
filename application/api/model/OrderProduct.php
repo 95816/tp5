@@ -11,5 +11,8 @@ namespace app\api\model;
 
 class OrderProduct extends BaseModel
 {
-
+    //设置自动维护时间戳
+    protected $autoWriteTimestamp = true;
+    // 关闭自动写入createTime字段
+    protected $createTime = false;
 }
