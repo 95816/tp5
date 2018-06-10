@@ -34,7 +34,7 @@ class Token
      * @throws Exception
      * @throws TokenException
      */
-    private static function getCurrentTokenVar($key)
+    public static function getCurrentTokenVar($key)
     {
         $token = Request::instance()->header('token');
         $vars = cache($token);
@@ -74,7 +74,13 @@ class Token
         return $scope;
     }
 
-    // 用户和管理员都可以访问的权限
+    /**
+     * 用户和管理员都可以访问的权限
+     * @return bool
+     * @throws Exception
+     * @throws ForbiddenException
+     * @throws TokenException
+     */
     public static function needPrimaryScope()
     {
         $scope = self::getCurrentScope();
@@ -89,7 +95,13 @@ class Token
         }
     }
 
-    // 只有用户可以访问的权限
+    /**
+     * 只有用户可以访问的权限
+     * @return bool
+     * @throws Exception
+     * @throws ForbiddenException
+     * @throws TokenException
+     */
     public static function needExclusiveSuper()
     {
         $scope = self::getCurrentScope();
@@ -102,6 +114,24 @@ class Token
         } else {
             throw new TokenException();
         }
+    }
+
+    /**
+     * 检测下订单用户是和当前uid 是否一致
+     * @param $checkUID
+     * @return bool
+     * @throws Exception
+     * @throws TokenException
+     */
+    public static function isValidateOperate($checkUID)
+    {
+        if (!$checkUID) {
+            throw new Exception('检查UID时必须传入一个被检查的UID！');
+        }
+        if (self::getCurrentUid() != $checkUID) {
+            return false;
+        }
+        return true;
     }
 
 }
