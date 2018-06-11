@@ -50,6 +50,7 @@ class Pay
             return $status;
         }
 
+        return $this->makeWxPreOrder($status['orderPrice']);
 
     }
 
@@ -65,7 +66,8 @@ class Pay
         $wxOrderData->SetTotal_fee($totalPrice * 100);
         $wxOrderData->SetBody('天天都来买');
         $wxOrderData->SetOpenid($openid);
-        $wxOrderData->SetNotify_url('');
+        $wxOrderData->SetNotify_url('http://qq.com');
+        return $this->getPaySignature($wxOrderData);
     }
 
     private function getPaySignature($wxOrderData)
@@ -75,6 +77,48 @@ class Pay
             Log::record($wxOrder, 'error');
             Log::record('获取预支付订单失败', 'error');
         }
+        //因为这里没有商户号所以接受不到wxOrder数据
+        $wxOrder = [
+            'appid' => 'wx7195f81fc31b978f',
+            'mch_id' => 'bbbbbbbbbbbb',
+            'nonce_str' => 'w6z0J72nQj7f',
+            'prepay_id' => 'wx20180612213174029317973124',
+            'result_code' => 'SUCCESS',
+            'return_code' => 'SUCCESS',
+            'return_msg' => 'OK',
+            'sign' => '0A2b8Hf9L24fJe8N0faNfsO'
+        ];
+        //处理订单prepay_id
+        $this->recordPreOrder($wxOrder);
+        //处理返回结果
+        $signature = $this->sign($wxOrder);
+        return $signature;
+    }
+
+    /**更新订单预支付prepay_id
+     * @param $wxOrder
+     */
+    private function recordPreOrder($wxOrder)
+    {
+        $order = OrderModel::where('id', $this->orderID)
+            ->update(['prepay_id' => $wxOrder['prepay_id']]);
+    }
+
+    private function sign($wxOrder)
+    {
+        $jsApiPayData = new \WxPayJsApiPay();
+        $jsApiPayData->SetAppid(config('wx.app_id'));
+        $jsApiPayData->SetTimeStamp((string)time());
+        $rand = md5(time() . mt_rand(0, 1000));
+        $jsApiPayData->SetNonceStr($rand);
+        $jsApiPayData->SetPackage('prepay_id=' . $wxOrder['prepay_id']);
+        $jsApiPayData->SetSignType('md5');
+
+        $sign = $jsApiPayData->MakeSign();
+        $rawValues = $jsApiPayData->GetValues();
+        $rawValues['paySign'] = $sign;
+        unset($rawValues['appId']);
+        return $rawValues;
     }
 
     /**
@@ -86,7 +130,7 @@ class Pay
      */
     private function checkOrderValid()
     {
-        $order = OrderModel::where('user_id', $this->orderID)
+        $order = OrderModel::where('id', $this->orderID)
             ->find();
         //订单号不存在
         if (!$order) {
