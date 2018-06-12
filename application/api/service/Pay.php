@@ -80,7 +80,7 @@ class Pay
         //因为这里没有商户号所以接受不到wxOrder数据
         $wxOrder = [
             'appid' => 'wx7195f81fc31b978f',
-            'mch_id' => 'bbbbbbbbbbbb',
+            'mch_id' => 'jg9fdg4tj0f423jka0f',
             'nonce_str' => 'w6z0J72nQj7f',
             'prepay_id' => 'wx20180612213174029317973124',
             'result_code' => 'SUCCESS',

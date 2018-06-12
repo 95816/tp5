@@ -50,3 +50,4 @@ Route::rule('api/:version/order', 'api/:version.Order/placeOrder', 'post');
 //WeChat API
 Route::rule('api/:version/token/user', 'api/:version.Token/getToken', 'post');
 Route::rule('api/:version/pay/pre_order', 'api/:version.Pay/getPreOrder', 'post');
+Route::rule('api/:version/pay/notify', 'api/:version.Pay/receiveNotify', 'post');
