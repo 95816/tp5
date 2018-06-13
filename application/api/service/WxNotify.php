@@ -10,6 +10,7 @@ namespace app\api\service;
 
 use app\api\model\Product;
 use app\lib\enum\OrderStatusEnum;
+use think\Db;
 use think\Exception;
 use think\Loader;
 use app\api\model\Order as OrderModel;
@@ -22,10 +23,10 @@ class WxNotify extends \WxPayNotify
 {
     public function NotifyProcess($data, &$msg)
     {
-
         if ($data['result_code'] == 'SUCCESS') {
+            Db::startTrans();
             try {
-                $order = OrderModel::where('order_no', $data['out_trade_no'])->find();
+                $order = OrderModel::where('order_no', $data['out_trade_no'])->find()->lock(true);
                 if ($order->status == 1) {
                     $orderService = new OrderService();
                     $stockStatus = $orderService->checkOrderStack($order->id);
@@ -36,16 +37,16 @@ class WxNotify extends \WxPayNotify
                         $this->updateOrderStatus($order->id, false);
                     }
                 }
+                Db::commit();
                 return true;
             } catch (Exception $exception) {
+                Db::rollback();
                 Log::error($exception);
                 return false;
             }
         } else {
             return true;
         }
-
-
     }
 
     /**

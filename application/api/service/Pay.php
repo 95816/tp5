@@ -66,7 +66,7 @@ class Pay
         $wxOrderData->SetTotal_fee($totalPrice * 100);
         $wxOrderData->SetBody('天天都来买');
         $wxOrderData->SetOpenid($openid);
-        $wxOrderData->SetNotify_url('http://qq.com');
+        $wxOrderData->SetNotify_url(config('secure.pay_back_url'));
         return $this->getPaySignature($wxOrderData);
     }
 

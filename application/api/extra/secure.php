@@ -7,5 +7,6 @@
  */
 
 return [
-    'token_salt' => 'Ih7Hu5SsjWbwYTvx'
+    'token_salt' => 'Ih7Hu5SsjWbwYTvx',
+    'pay_back_url' => 'http://mytp.com/api/v1/pay/notify'
 ];

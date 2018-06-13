@@ -9,6 +9,7 @@
 namespace app\api\controller\v1;
 
 use app\api\service\Pay as PayService;
+use app\api\service\WxNotify;
 use app\api\validate\IDMustBePositiveInt;
 
 class Pay extends BaseController
@@ -27,6 +28,7 @@ class Pay extends BaseController
 
     public function receiveNotify()
     {
-        
+        $notify = new WxNotify();
+        $notify->Handle();
     }
 }

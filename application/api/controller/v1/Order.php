@@ -8,7 +8,9 @@
 
 namespace app\api\controller\v1;
 
+use app\api\validate\PagingParameter;
 use app\api\validate\PlaceOrder;
+use app\api\model\Order as OrderModel;
 use app\api\service\Token as TokenService;
 use app\api\service\Order as OrderService;
 
@@ -29,6 +31,24 @@ class Order extends BaseController
     protected $beforeActionList = [
         'checkExclusiveScope' => ['only' => 'placeorder'],
     ];
+
+    public function getSummaryByUser($page = 1, $size = 15)
+    {
+        (new PagingParameter())->goCheck();
+        $uid = TokenService::getCurrentUid();
+        $pagingOrders = OrderModel::getSummaryByUser($uid, $page, $size);
+        if ($pagingOrders->isEmpty()) {
+            return [
+                'data' => [],
+                'current_page' => $pagingOrders->currentPage()
+            ];
+        } else {
+            return [
+                'data' => $pagingOrders->toArray(),
+                'page' => $pagingOrders->currentPage()
+            ];
+        }
+    }
 
     /**
      * @return string

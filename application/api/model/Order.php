@@ -16,4 +16,18 @@ class Order extends BaseModel
 
     //设置自动维护时间戳
     protected $autoWriteTimestamp = true;
+
+    /**
+     * @param $uid
+     * @param int $page
+     * @param int $size
+     * @throws \think\exception\DbException
+     */
+    public static function getSummaryByUser($uid, $page = 1, $size = 15)
+    {
+        $pagingData = self::where('user_id', $uid)
+            ->order('create_time', 'desc')
+            ->paginate($size, true, ['page' => $page]);
+        return $pagingData;
+    }
 }
