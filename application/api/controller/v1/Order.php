@@ -8,11 +8,13 @@
 
 namespace app\api\controller\v1;
 
+use app\api\validate\IDMustBePositiveInt;
 use app\api\validate\PagingParameter;
 use app\api\validate\PlaceOrder;
 use app\api\model\Order as OrderModel;
 use app\api\service\Token as TokenService;
 use app\api\service\Order as OrderService;
+use app\lib\exception\OrderException;
 
 class Order extends BaseController
 {
@@ -30,8 +32,19 @@ class Order extends BaseController
     //指定前置操作方法
     protected $beforeActionList = [
         'checkExclusiveScope' => ['only' => 'placeorder'],
+        'checkPrimaryScope' => ['only' => 'getDetail,getsummarybyuser'],
     ];
 
+    /**
+     * 获取历史订单
+     * @param int $page
+     * @param int $size
+     * @return array
+     * @throws \app\lib\exception\ParameterException
+     * @throws \app\lib\exception\TokenException
+     * @throws \think\Exception
+     * @throws \think\exception\DbException
+     */
     public function getSummaryByUser($page = 1, $size = 15)
     {
         (new PagingParameter())->goCheck();
@@ -44,10 +57,28 @@ class Order extends BaseController
             ];
         } else {
             return [
-                'data' => $pagingOrders->toArray(),
+                'data' => $pagingOrders->hidden(['snap_items', 'prepay_id', 'snap_address'])->toArray(),
                 'page' => $pagingOrders->currentPage()
             ];
         }
+    }
+
+    /**
+     * 订单详情
+     * @param $id
+     * @return OrderModel|null
+     * @throws OrderException
+     * @throws \app\lib\exception\ParameterException
+     * @throws \think\exception\DbException
+     */
+    public function getDetail($id)
+    {
+        (new IDMustBePositiveInt())->goCheck();
+        $orderDetail = OrderModel::get($id);
+        if (!$orderDetail) {
+            throw new OrderException();
+        }
+        return $orderDetail->hidden(['prepay_id']);
     }
 
     /**

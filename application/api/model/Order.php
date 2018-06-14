@@ -17,10 +17,27 @@ class Order extends BaseModel
     //设置自动维护时间戳
     protected $autoWriteTimestamp = true;
 
+    public function getSnapItemsAttr($value)
+    {
+        if (empty($value)) {
+            return null;
+        }
+        return json_decode($value);
+    }
+
+    public function getSnapAddressAttr($value)
+    {
+        if (empty($value)) {
+            return null;
+        }
+        return json_decode($value);
+    }
+
     /**
      * @param $uid
      * @param int $page
      * @param int $size
+     * @return \think\Paginator
      * @throws \think\exception\DbException
      */
     public static function getSummaryByUser($uid, $page = 1, $size = 15)

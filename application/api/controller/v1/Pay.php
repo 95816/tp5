@@ -19,6 +19,7 @@ class Pay extends BaseController
         'checkExclusiveScope' => ['only' => 'getpreorder'],
     ];
 
+    //获取微信预订单
     public function getPreOrder($id = '')
     {
         (new IDMustBePositiveInt())->goCheck();
@@ -26,6 +27,7 @@ class Pay extends BaseController
         return $pay->pay();
     }
 
+    //微信支付回调地址
     public function receiveNotify()
     {
         $notify = new WxNotify();

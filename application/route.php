@@ -46,6 +46,7 @@ Route::rule('api/:version/address', 'api/:version.Address/createOrUpdateAddress'
 
 //订单路由
 Route::rule('api/:version/order', 'api/:version.Order/placeOrder', 'post');
+Route::any('api/:version/order/:id', 'api/:version.Order/getDetail', ['method' => 'get|post'], ['id' => '\d+']);
 Route::rule('api/:version/order/by_user', 'api/:version.Order/getSummaryByUser', 'post|get');
 
 //WeChat API
